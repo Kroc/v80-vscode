@@ -1,0 +1,93 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "v80",
+	"patterns": [
+		{"include" : "#comment"},
+		{"include" : "#condition"},
+		{"include" : "#keyword"},
+		{"include" : "#label"},
+		{"include" : "#const"},
+		{"include" : "#number"},
+		{"include" : "#string"},
+		{"include" : "#operators"},
+		{"include" : "#instructions"}
+	],
+	"fileTypes": [
+		".v80"
+	],
+	"repository": {
+		"comment": {
+			"name" : "comment.line.semicolon.v80",
+			"begin" : ";",
+			"end" : "$"
+		},
+		"condition": {
+			"comment" : "condition marker",
+			"match" : "(^\\s*)(\\?[=!+-])",
+			"captures": {"2" : {"name" : "keyword.control.v80"}}
+		},
+		"keyword": {
+			"name": "keyword.control.v80",
+			"match" : "\\.([abiw])\\b"
+		},
+		"const": {
+			"name" : "variable.language.v80",
+			"match" : "#\\S+"
+		},
+		"label": {
+			"name": "entity.name.tag.v80",
+			"match": ":\\S+"
+		},
+		"number": {
+			"patterns" : [
+				{
+					"comment" : "$ at start of line sets program-counter",
+					"match" : "^\\s*(\\$)(?>\\s)",
+					"captures": {"1" : {"name": "keyword.control.v80"}}
+				},{
+					"comment" : "$ in expression returns current program-counter",
+					"match" : "(\\$)(?>$|\\s)",
+					"captures": {"1" : {"name": "constant.language.v80"}}
+				},{
+					"name": "constant.numeric.hexadecimal.v80",
+					"match" : "\\$(?i:[0-9A-F]{1,4})"
+				}
+			]
+		},
+		"string" : {
+			"name" : "string.quoted.double.v80",
+			"match" : "\"[^\"]+\""
+		},
+		"operators" : {
+			"patterns" : [
+				{
+					"comment" : "warn about parenthesis without inside spaces",
+					"name" : "invalid.illegal.v80",
+					"match" : "[^(\\s]\\(|\\([^(\\s]|[^\\s)]\\)|\\)[^\\s)]"
+				},{
+					"name" : "keyword.other.operator.v80",
+					"match" : "\\(|\\)"
+				},{
+					"name" : "keyword.operator.v80",
+					"match" : "[-+*\\\\/&|^!<>]"
+				}
+			]
+		},
+		"instructions" : {
+			"name" : "support.function.v80",
+			"match" : "(?x) ([a-z][a-z0-9]*) (?: (\\?[a-z]+) | (\\.)([0-9]+) | ('|\\.|\\*(?:\\$\\.)?) ([a-z]+)? (?: (\\. | (?:'\\*?|\\*)) ([a-z]+(')?)? )?)?",
+			"captures" : {
+				"1" : {"name" : "support.function.name.v80"},
+				"2" : {"name" : "keyword.control.v80"},
+				"3" : {"name" : "storage.modifier.v80"},
+				"4" : {"name" : "support.constant.v80"},
+				"5" : {"name" : "storage.modifier.v80"},
+				"6" : {"name" : "support.variable.register.v80"},
+				"7" : {"name" : "storage.modifier.v80"},
+				"8" : {"name" : "support.variable.register.v80"},
+				"9" : {"name" : "storage.modifier.v80"}
+			} 
+		}
+	},
+	"scopeName": "source.v80"
+}
