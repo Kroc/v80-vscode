@@ -1,12 +1,15 @@
 {
   "name": "vscode-v80",
+  "publisher": "KrocCamen",
   "displayName": "vscode-v80",
   "description": "Support for v80 assembler syntax.",
   "license": "MIT",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.90.0"
   },
+  "icon": "icon.png",
+  "galleryBanner": {"color": "#000d05", "theme": "dark"},
   "author": {
     "name": "Kroc Camen",
     "email": "kroc@camendesign.com",

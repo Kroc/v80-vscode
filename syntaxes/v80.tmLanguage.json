@@ -28,7 +28,7 @@
 		},
 		"keyword": {
 			"name": "keyword.control.v80",
-			"match" : "\\.([abiw])\\b"
+			"match" : "\\.(?i:[abiw])\\b"
 		},
 		"const": {
 			"name" : "variable.language.v80",
@@ -36,7 +36,7 @@
 		},
 		"label": {
 			"name": "entity.name.tag.v80",
-			"match": ":\\S+"
+			"match": "[:_]\\S+"
 		},
 		"number": {
 			"patterns" : [
@@ -75,7 +75,7 @@
 		},
 		"instructions" : {
 			"name" : "support.function.v80",
-			"match" : "(?x) ([a-z][a-z0-9]*) (?: (\\?[a-z]+) | (\\.)([0-9]+) | ('|\\.|\\*(?:\\$\\.)?) ([a-z]+)? (?: (\\. | (?:'\\*?|\\*)) ([a-z]+(')?)? )?)?",
+			"match" : "(?xi) ([a-z][a-z0-9]*) (?: (\\?[a-z]+) | (\\.)([0-9]+) | ('|\\.|\\*(?:\\$\\.)?) ([a-z]+)? (?: (\\. | (?:'\\*?|\\*)) ([a-z]+(')?)? )?)?",
 			"captures" : {
 				"1" : {"name" : "support.function.name.v80"},
 				"2" : {"name" : "keyword.control.v80"},
