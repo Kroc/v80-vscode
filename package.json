@@ -4,7 +4,7 @@
   "displayName": "vscode-v80",
   "description": "Support for v80 assembler syntax.",
   "license": "MIT",
-  "version": "0.0.2-dev",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.90.0"
   },
