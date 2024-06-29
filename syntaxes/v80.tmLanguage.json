@@ -51,6 +51,9 @@
 				},{
 					"name": "constant.numeric.hexadecimal.v80",
 					"match" : "\\$(?i:[0-9A-F]{1,4})"
+				},{
+					"name": "constant.numeric.binary.v80",
+					"match" : "%[01]{1,16}"
 				}
 			]
 		},
