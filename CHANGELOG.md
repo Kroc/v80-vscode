@@ -1,10 +1,11 @@
 # Change Log
 
-## v0.0.2-dev: 2024/6/29
+## v0.0.3-dev: 2024/6/30
 
 - Add icon
 - Local label syntax (`_` sigil)
 - Binary number literals (`%` sigil)
+- Decimal number literals
 
 ## v0.0.0: 2024/6/27
 

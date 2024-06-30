@@ -1,51 +1,39 @@
 {
-  "name": "vscode-v80",
-  "publisher": "KrocCamen",
-  "displayName": "vscode-v80",
-  "description": "Support for v80 assembler syntax.",
-  "license": "MIT",
-  "version": "0.0.2",
-  "engines": {
-    "vscode": "^1.90.0"
-  },
-  "icon": "icon.png",
-  "galleryBanner": {"color": "#000d05", "theme": "dark"},
-  "author": {
-    "name": "Kroc Camen",
-    "email": "kroc@camendesign.com",
-    "url": "https://camendesign.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Kroc/vscode-v80"
-  },
-  "categories": [
-    "Programming Languages"
-  ],
-  "keywords": [
-    "assembler",
-    "z80",
-    "8-bit"
-  ],
-  "contributes": {
-    "languages": [
-      {
-        "id": "v80",
-        "aliases": [
-          "v80"
-        ],
-        "extensions": [
-          ".v80"
-        ],
-        "configuration": "./language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "v80",
-        "scopeName": "source.v80",
-        "path": "./syntaxes/v80.tmLanguage.json"
-      }
-    ]
-  }
+	"name"			: "vscode-v80",
+	"publisher"		: "KrocCamen",
+	"displayName"	: "v80",
+	"description"	: "Support for v80 assembler syntax.",
+	"license"		: "MIT",
+	"version"		: "0.0.3",
+	"engines"		: { "vscode": "^1.90.0" },
+	"icon"			: "icon.png",
+	"galleryBanner"	: { "color": "#000d05", "theme": "dark" },
+	"author"		: {
+		"name"		: "Kroc Camen",
+		"email"		: "kroc@camendesign.com",
+		"url"		: "https://camendesign.com"
+	},
+	"repository" 	: {
+		"type"		: "git",
+		"url"		: "https://github.com/Kroc/vscode-v80"
+	},
+	"categories"	: [ "Programming Languages" ],
+	"keywords"		: [ "assembler", "z80", "8-bit" ],
+	"contributes"	: {
+		"languages"	: [
+			{
+				"id"			: "v80",
+				"aliases"		: [ "v80" ],
+				"extensions"	: [ ".v80" ],
+				"configuration"	: "./language-configuration.json"
+			}
+		],
+		"grammars"	: [
+			{
+				"language"		: "v80",
+				"scopeName"		: "source.v80",
+				"path"			: "./syntaxes/v80.tmLanguage.json"
+			}
+		]
+	}
 }

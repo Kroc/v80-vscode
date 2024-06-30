@@ -1,85 +1,104 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "v80",
-	"patterns": [
-		{"include" : "#comment"},
-		{"include" : "#condition"},
-		{"include" : "#keyword"},
-		{"include" : "#label"},
-		{"include" : "#const"},
-		{"include" : "#number"},
-		{"include" : "#string"},
-		{"include" : "#operators"},
-		{"include" : "#instructions"}
+	"$schema"	: "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name"		: "v80",
+	"scopeName"	: "source.v80",
+	"fileTypes"	: [ ".v80" ],
+	"patterns"	: [
+		{"include"	: "#comment"},
+		{"include"	: "#condition"},
+		{"include"	: "#keyword"},
+		{"include"	: "#label"},
+		{"include"	: "#const"},
+		{"include"	: "#number"},
+		{"include"	: "#string"},
+		{"include"	: "#operators"},
+		{"include"	: "#instructions"}
 	],
-	"fileTypes": [
-		".v80"
-	],
-	"repository": {
-		"comment": {
-			"name" : "comment.line.semicolon.v80",
-			"begin" : ";",
-			"end" : "$"
+	"repository" : {
+		"comment" : {
+			"name" 		: "comment.line.semicolon.v80",
+			"begin" 	: ";",
+			"end" 		: "$"
 		},
-		"condition": {
-			"comment" : "condition marker",
-			"match" : "(^\\s*)(\\?[=!+-])",
-			"captures": {"2" : {"name" : "keyword.control.v80"}}
+		"condition" : {
+			"comment"	: "condition marker",
+			"match" 	: "(^\\s*)(\\?[=!+-])",
+			"captures"	: {"2" : {"name" : "keyword.control.v80"}}
 		},
-		"keyword": {
-			"name": "keyword.control.v80",
-			"match" : "\\.(?i:[abiw])\\b"
+		"keyword" : {
+			"comment"	: "keyword",
+			"name"		: "keyword.control.v80",
+			"match" 	: "\\.(?i:[abiw])\\b"
 		},
-		"const": {
-			"name" : "variable.language.v80",
-			"match" : "#\\S+"
+		"const" : {
+			"comment"	: "constant",
+			"name" 		: "variable.language.v80",
+			"match" 	: "#\\S+"
 		},
-		"label": {
-			"name": "entity.name.tag.v80",
-			"match": "[:_]\\S+"
+		"label" : {
+			"name"		: "entity.name.tag.v80",
+			"match"		: "[:_]\\S+"
 		},
-		"number": {
+		"number" : {
 			"patterns" : [
 				{
-					"comment" : "$ at start of line sets program-counter",
-					"match" : "^\\s*(\\$)(?>\\s)",
-					"captures": {"1" : {"name": "keyword.control.v80"}}
+					"comment" 	: "$ at start of line sets program-counter",
+					"match" 	: "^\\s*(\\$)(?>\\s)",
+					"captures"	: {"1" : {"name": "keyword.control.v80"}}
 				},{
-					"comment" : "$ in expression returns current program-counter",
-					"match" : "(\\$)(?>$|\\s)",
+					"comment" 	: "$ in expression returns current program-counter",
+					"match" 	: "(\\$)(?>\\s)",
 					"captures": {"1" : {"name": "constant.language.v80"}}
 				},{
-					"name": "constant.numeric.hexadecimal.v80",
-					"match" : "\\$(?i:[0-9A-F]{1,4})"
+					"comment"	: "hexadecimal number",
+					"name"		: "constant.numeric.hexadecimal.v80",
+					"match" 	: "\\$(?i:[0-9A-F]{1,4})(?>\\s)"
 				},{
-					"name": "constant.numeric.binary.v80",
-					"match" : "%[01]{1,16}"
+					"comment"	: "error without trailing whitespace!",
+					"name"		: "invalid.v80",
+					"match"		: "\\$(?i:[0-9A-F]{1,4})\\S"
+				},{
+					"comment"	: "binary number",
+					"name"		: "constant.numeric.binary.v80",
+					"match" 	: "%[01]{1,16}(?>\\s)"
+				},{
+					"comment"	: "error without trailing whitespace!",
+					"name"		: "invalid.v80",
+					"match"		: "%[01]{1,16}\\S"
+				},{
+					"comment"	: "decimal number",
+					"name"		: "constant.numeric.decimal.v80",
+					"match" 	: "\\d+(?>\\s)"
+				},{
+					"comment"	: "error without trailing whitespace!",
+					"name"		: "invalid.v80",
+					"match"		: "\\d+\\S"
 				}
 			]
 		},
 		"string" : {
-			"name" : "string.quoted.double.v80",
-			"match" : "\"[^\"]+\""
+			"name" 		: "string.quoted.double.v80",
+			"match" 	: "\"[^\"]+\""
 		},
 		"operators" : {
 			"patterns" : [
 				{
-					"comment" : "warn about parenthesis without inside spaces",
-					"name" : "invalid.illegal.v80",
-					"match" : "[^(\\s]\\(|\\([^(\\s]|[^\\s)]\\)|\\)[^\\s)]"
+					"comment"	: "warn about parenthesis without inside spaces",
+					"name" 		: "invalid.v80",
+					"match" 	: "[^(\\s]\\(|\\([^(\\s]|[^\\s)]\\)|\\)[^\\s)]"
 				},{
-					"name" : "keyword.other.operator.v80",
-					"match" : "\\(|\\)"
+					"name" 		: "keyword.other.operator.v80",
+					"match" 	: "\\(|\\)"
 				},{
-					"name" : "keyword.operator.v80",
-					"match" : "[-+*\\\\/&|^!<>]"
+					"name" 		: "keyword.operator.v80",
+					"match" 	: "[-+*\\\\/&|^!<>]"
 				}
 			]
 		},
 		"instructions" : {
-			"name" : "support.function.v80",
-			"match" : "(?xi) ([a-z][a-z0-9]*) (?: (\\?[a-z]+) | (\\.)([0-9]+) | ('|\\.|\\*(?:\\$\\.)?) ([a-z]+)? (?: (\\. | (?:'\\*?|\\*)) ([a-z]+(')?)? )?)?",
-			"captures" : {
+			"name"		: "support.function.v80",
+			"match" 	: "(?xi) ([a-z][a-z0-9]*) (?: (\\?[a-z]+) | (\\.)([0-9]+) | ('|\\.|\\*(?:\\$\\.)?) ([a-z]+)? (?: (\\. | (?:'\\*?|\\*)) ([a-z]+(')?)? )?)?",
+			"captures"	: {
 				"1" : {"name" : "support.function.name.v80"},
 				"2" : {"name" : "keyword.control.v80"},
 				"3" : {"name" : "storage.modifier.v80"},
@@ -91,6 +110,5 @@
 				"9" : {"name" : "storage.modifier.v80"}
 			} 
 		}
-	},
-	"scopeName": "source.v80"
+	}
 }
