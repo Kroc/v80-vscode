@@ -28,7 +28,7 @@
 		"keyword" : {
 			"comment"	: "keyword",
 			"name"		: "keyword.control.v80",
-			"match" 	: "\\.(?i:[abiw])\\b"
+			"match" 	: "\\.(?i:[abfiw])\\b"
 		},
 		"const" : {
 			"comment"	: "constant",
@@ -73,6 +73,18 @@
 					"comment"	: "error without trailing whitespace!",
 					"name"		: "invalid.v80",
 					"match"		: "\\d+\\S"
+				},{
+					"comment"	: "character literal",
+					"name"		: "constant.character.escape.v80",
+					"match" 	: "'\\S(?>\\s)"
+				},{
+					"comment"	: "error if no character",
+					"name"		: "invalid.v80",
+					"match"		: "'(?>\\s)"
+				},{
+					"comment"	: "error without trailing whitespace!",
+					"name"		: "invalid.v80",
+					"match"		: "'\\S\\S"
 				}
 			]
 		},
