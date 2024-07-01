@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.1.2: 2024/7/1
+
+Release to match [v80 release version 0.1.2](https://github.com/Kroc/v80/releases/tag/v0.1.2)
+
+- Square brackets allowed as alternatives to parenthesis
+
 ## v0.1.0: 2024/6/30
 
 Release to match [v80 release version 0.1](https://github.com/Kroc/v80/releases/tag/v0.1)

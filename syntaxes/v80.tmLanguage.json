@@ -99,6 +99,10 @@
 					"name" 		: "invalid.v80",
 					"match" 	: "[^(\\s]\\(|\\([^(\\s]|[^\\s)]\\)|\\)[^\\s)]"
 				},{
+					"comment"	: "and for square brackets, doing both in one hurts my brain",
+					"name" 		: "invalid.v80",
+					"match" 	: "[^\\[\\s]\\[|\\[[^\\[\\s]|[^\\s\\]]\\]|\\][^\\s\\]]"
+				},{
 					"name" 		: "keyword.other.operator.v80",
 					"match" 	: "\\(|\\)"
 				},{
